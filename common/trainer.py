@@ -3,7 +3,7 @@ sys.path.append('/home/ats432/projects/Matsuzaki_Lab/scratch_NLP')
 import numpy
 import time
 import matplotlib.pyplot as plt
-import numpy as np
+from common.np import *  # import numpy as np
 from common.util import clip_grads
 
 
@@ -63,6 +63,7 @@ class Trainer:
         plt.xlabel('iterations (x' + str(self.eval_interval) + ')')
         plt.ylabel('loss')
         plt.show()
+
 
 def remove_duplicate(params, grads):
     '''

@@ -1,6 +1,6 @@
 import sys
 sys.path.append('/home/ats432/projects/Matsuzaki_Lab/scratch_NLP')
-import numpy as np  
+from common.np import *  # import numpy as np
 from common.config import GPU
 from common.functions import softmax, cross_entropy_error
 
@@ -62,15 +62,18 @@ class Embedding:
     def forward(self, idx):
         W, = self.params
         self.idx = idx
-        out =W[idx]
+        out = W[idx]
 
         return out
     
     def backward(self, dout):
         dW, = self.grads
         dW[...] = 0
-
-        np.add.at(dW, self.idx, dout)
+        if GPU:
+            np.scatter_add(dW, self.idx, dout)
+        else:
+            np.add.at(dW, self.idx, dout)
+        
         
         return None
 

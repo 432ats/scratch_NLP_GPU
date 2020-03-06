@@ -1,6 +1,6 @@
 import sys
 sys.path.append('/home/ats432/projects/Matsuzaki_Lab/scratch_NLP')
-import numpy as np 
+from common.np import *  # import numpy as np
 from common.layers import Embedding, SigmoidWithLoss
 import collections
 
@@ -60,7 +60,7 @@ class UnigramSampler:
             target_idx = target[i]
             p[target_idx] = 0
             p /= p.sum()
-            negative_sample[i, :] = np.random.choice(self.vocab_size, size=self.sample_size, replace=False, p=p)
+            negative_sample[i, :] = np.random.choice(self.vocab_size, size=self.sample_size, replace=True, p=p)
     
 
         return negative_sample

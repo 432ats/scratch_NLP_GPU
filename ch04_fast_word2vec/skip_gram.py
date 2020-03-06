@@ -2,7 +2,7 @@ import sys
 sys.path.append('/home/ats432/projects/Matsuzaki_Lab/scratch_NLP')
 import numpy as np 
 from common.layers import *
-from ch04_fast_word2vec.negative_sampling_layer import NegativeSamplingLoss
+from ch04_fast_word2vec.negative_sample_layer import NegativeSamplingLoss
 
 
 class SkipGram:

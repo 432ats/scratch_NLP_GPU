@@ -1,4 +1,5 @@
-import numpy as np
+from common.np import *
+
 
 def softmax(x):
     if x.ndim == 2:

@@ -1,6 +1,6 @@
 import sys
 sys.path.append('/home/ats432/projects/Matsuzaki_Lab/scratch_NLP')
-import numpy as np 
+import os
 from common.np import *
 
 #コーパスの前処理
