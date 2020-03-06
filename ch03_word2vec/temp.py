@@ -1,5 +1,5 @@
 import sys
-sys.path.append('/Users/ats432/projects/Matsuzaki_lab/DeepLearning_Scratch_NLP')
+sys.path.append('/home/ats432/projects/Matsuzaki_Lab/scratch_NLP')
 import numpy as np 
 from common.util import preprocess, create_contexts_target, convert_one_hot
 

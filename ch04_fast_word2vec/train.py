@@ -1,5 +1,5 @@
 import sys
-sys.path.append('/Users/ats432/projects/Matsuzaki_lab/DeepLearning_Scratch_NLP')
+sys.path.append('/home/ats432/projects/Matsuzaki_Lab/scratch_NLP')
 from common import config
 # GPUで実行する場合は、下記のコメントアウトを消去（要cupy）
 # ===============================================

@@ -1,3 +1,5 @@
+import sys
+sys.path.append('/home/ats432/projects/Matsuzaki_Lab/scratch_NLP')
 from common.config import GPU
 
 

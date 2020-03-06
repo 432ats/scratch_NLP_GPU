@@ -1,7 +1,7 @@
 import sys
-sys.path.append('..')
+sys.path.append('/home/ats432/projects/Matsuzaki_Lab/scratch_NLP')
 import numpy as np 
-#from common.np import *
+from common.np import *
 
 #コーパスの前処理
 def preprocess(text):

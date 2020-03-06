@@ -1,5 +1,5 @@
 import sys
-sys.path.append('/Users/ats432/projects/Matsuzaki_lab/DeepLearning_Scratch_NLP')
+sys.path.append('/home/ats432/projects/Matsuzaki_Lab/scratch_NLP')
 from common.trainer import Trainer
 from common.optimizer import Adam
 from simple_cbow import SimpleCBOW

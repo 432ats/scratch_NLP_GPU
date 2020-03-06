@@ -1,3 +1,5 @@
+import sys
+sys.path.append('/home/ats432/projects/Matsuzaki_Lab/scratch_NLP')
 import numpy as np  
 from common.config import GPU
 from common.functions import softmax, cross_entropy_error

@@ -1,5 +1,5 @@
 import sys
-sys.path.append('..')
+sys.path.append('/home/ats432/projects/Matsuzaki_Lab/scratch_NLP')
 import numpy
 import time
 import matplotlib.pyplot as plt

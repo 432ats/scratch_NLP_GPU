@@ -1,5 +1,5 @@
 import sys
-sys.path.append('/Users/ats432/projects/Matsuzaki_lab/DeepLearning_Scratch_NLP')
+sys.path.append('/home/ats432/projects/Matsuzaki_Lab/scratch_NLP')
 import numpy as np 
 import matplotlib.pyplot as plt
 from common.util import preprocess, create_co_matrix, most_similar, ppmi
