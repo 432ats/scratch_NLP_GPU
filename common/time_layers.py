@@ -48,7 +48,7 @@ class TimeRNN:
     def reset_state(self):
         self.h = None
     
-    def forward(self.xs):
+    def forward(self, xs):
         Wx, Wh, b = self.params
         N, T, D = xs.shape
         D, H = Wx.shape
@@ -65,5 +65,27 @@ class TimeRNN:
             hs[:, t, :] = self.h
             self.layers.append(layer)
         
-        return hs
+        return 
+    
+    def backward(self, dhs):
+        Wx, Wh, b = self.params
+        N, T, H = dhs.shape
+        D, H = Wx.shape
 
+        dxs = np.empty((N, T, D), dtype='f')
+        dh = 0
+        grads = [0,0,0]
+        for t in reversed(range(T)):
+            layer = self.layers[t]
+            dx, dh = layer.backward(dhs[:, t, :] + dh) # 合算した勾配
+            dxs[:, t, :] = dx
+
+            for i, grad in enumerate(layer.grads):
+                grads[i] += grad
+            
+        for i, grad in enumerate(grads):
+            self.grads[i][...] = grad
+
+        self.dh = dh
+
+        return dxs
