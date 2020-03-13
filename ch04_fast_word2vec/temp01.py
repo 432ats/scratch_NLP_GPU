@@ -1,4 +1,5 @@
 import numpy as np 
+import cupy as cp
 from negative_sample_layer import UnigramSampler
 # 0から9の数字の中から一つの数字をランダムにサンプリング
 print(np.random.choice(10))
@@ -16,7 +17,7 @@ print(np.random.choice(words, size=5, replace=False))
 
 #確率分布に従ってサンプリング
 p = [0.5, 0.1, 0.05, 0.2, 0.05, 0.1, 0.0]
-print(np.random.choice(words, size=3, replace=False, p=p))
+print(cp.random.choice(words, size=3, replace=False, p=p))
 
 p = [0.7, 0.29, 0.01]
 new_p = np.power(p, 0.75)

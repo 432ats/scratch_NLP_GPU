@@ -1,7 +1,9 @@
 import sys
 sys.path.append('/home/ats432/projects/Matsuzaki_Lab/scratch_NLP')
 from common.np import *  # import numpy as np
+import numpy
 from common.layers import Embedding, SigmoidWithLoss
+from common.util import to_cpu, to_gpu
 import collections
 
 class EmbeddingDot:
@@ -51,17 +53,20 @@ class UnigramSampler:
 
     def get_negative_sample(self, target):
         batch_size = target.shape[0]
+        if not GPU:
+            negative_sample = np.zeros((batch_size, self.sample_size), dtype=np.int32)
 
-        
-        negative_sample = np.zeros((batch_size, self.sample_size), dtype=np.int32)
-
-        for i in range(batch_size):
-            p = self.word_p.copy()
-            target_idx = target[i]
-            p[target_idx] = 0
-            p /= p.sum()
-            negative_sample[i, :] = np.random.choice(self.vocab_size, size=self.sample_size, replace=True, p=p)
-    
+            for i in range(batch_size):
+                p = self.word_p.copy()
+                target_idx = target[i]
+                p[target_idx] = 0
+                p /= p.sum()
+                negative_sample[i, :] = np.random.choice(self.vocab_size, size=self.sample_size, replace=False, p=p)
+        else:
+            # GPU(cupy）で計算するときは、速度を優先
+            # 負例にターゲットが含まれるケースがある
+            negative_sample = np.random.choice(self.vocab_size, size=(batch_size, self.sample_size),
+                                               replace=True, p=self.word_p)
 
         return negative_sample
 
@@ -102,4 +107,4 @@ class NegativeSamplingLoss:
             dscore = l0.backward(dout)
             dh += l1.backward(dscore)
 
-            return dh
+        return dh
