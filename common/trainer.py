@@ -64,6 +64,7 @@ class Trainer:
         plt.ylabel('loss')
         plt.show()
 
+
 class RnnlmTrainer:
     def __init__(self, model, optimizer):
         self.model = model
