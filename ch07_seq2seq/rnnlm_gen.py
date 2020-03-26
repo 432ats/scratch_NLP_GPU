@@ -21,3 +21,9 @@ class RnnlmGen(Rnnlm):
                 word_ids.append(int(x))
 
         return word_ids
+    
+    def get_state(self):
+        return self.lstm_layer.h, self.lstm_layer.c
+
+    def set_state(self, state):
+        self.lstm_layer.set_state(*state)
